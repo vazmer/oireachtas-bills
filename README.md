@@ -2,7 +2,6 @@
 
 ## Vite + Vitest + React + Typescript + MUI + Eslint + Prettier
 
-
 ---
 
 cd into the repository:

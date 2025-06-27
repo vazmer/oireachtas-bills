@@ -1,15 +1,7 @@
 {
-  "name": "capaciteam-assignment",
-  "version": "0.0.0",
-  "private": true,
-  "description": "This is a starter template to get you going with the must-have libraries for every project.",
-  "license": "ISC",
-  "author": "",
+  "name": "oireachtas-bills",
+  "author": "Bojan Vazmer (vazmer@gmail.com)",
   "type": "module",
-  "main": "eslint.config.js",
-  "directories": {
-    "test": "tests"
-  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -29,7 +21,7 @@
     "@fontsource/roboto": "^5.2.6",
     "@mui/icons-material": "^7.1.2",
     "@mui/material": "^7.1.2",
-    "@tailwindcss/vite": "^4.1.10",
+    "@tailwindcss/vite": "^4.1.11",
     "@types/node": "^24.0.4",
     "clsx": "^2.1.1",
     "husky": "^9.1.7",
