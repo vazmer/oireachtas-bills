@@ -20,15 +20,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: ⬇️ Checkout repo
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: ⎔ Setup node
         uses: actions/setup-node@v4
-        with:
-          node-version: 22
 
-      - name: Install dependencies
+      - name: 📥 Download deps
         uses: bahmutov/npm-install@v1
 
       - name: Build project
@@ -49,8 +47,6 @@ jobs:
 
       - name: ⎔ Setup node
         uses: actions/setup-node@v4
-        with:
-          node-version: 22
 
       - name: 📥 Download deps
         uses: bahmutov/npm-install@v1
@@ -67,8 +63,6 @@ jobs:
 
       - name: ⎔ Setup node
         uses: actions/setup-node@v4
-        with:
-          node-version: 22
 
       - name: 📥 Download deps
         uses: bahmutov/npm-install@v1
