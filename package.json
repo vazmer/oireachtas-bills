@@ -1,15 +1,7 @@
 {
-  "name": "capaciteam-assignment",
-  "version": "0.0.0",
-  "private": true,
-  "description": "This is a starter template to get you going with the must-have libraries for every project.",
-  "license": "ISC",
-  "author": "",
+  "name": "oireachtas-bills",
+  "author": "Bojan Vazmer (vazmer@gmail.com)",
   "type": "module",
-  "main": "eslint.config.js",
-  "directories": {
-    "test": "tests"
-  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
