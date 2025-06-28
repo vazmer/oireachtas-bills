@@ -165,7 +165,7 @@ export default function Bills() {
 											<BillStatus bill={bill} />
 										</TableCell>
 										<TableCell>
-											<BillSponsor bill={bill}/>
+											<BillSponsor bill={bill} />
 										</TableCell>
 										<TableCell>
 											<FavouriteButton bill={bill} />
@@ -178,7 +178,8 @@ export default function Bills() {
 										{loading && <TableRowsSkeleton />}
 										{!loading && (
 											<Typography sx={{ color: 'text.secondary' }}>
-												No bills found. Please refine your search, or try again later.
+												No bills found. Please refine your search, or try again
+												later.
 											</Typography>
 										)}
 									</TableCell>

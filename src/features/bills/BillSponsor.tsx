@@ -1,4 +1,4 @@
-import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
+import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined'
 import { Stack, Tooltip } from '@mui/material'
 import Box from '@mui/material/Box'
 import { type Bill } from 'bills-api'
