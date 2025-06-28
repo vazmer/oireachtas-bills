@@ -24,7 +24,7 @@ import { useId, useState } from 'react'
 import { TableRowsSkeleton } from '../../components/TableRowsSkeleton'
 import { useFetchBills } from '../../utils/bills'
 import { useBillsModal } from './BillsModal'
-import { BillSponsor } from './BillSponsor.tsx'
+import { BillSponsors } from './BillSponsors.tsx'
 import { BillStatus } from './BillsStatus'
 import FavoriteBills, { FavouriteButton } from './FavoriteBills'
 
@@ -165,7 +165,7 @@ export default function Bills() {
 											<BillStatus bill={bill} />
 										</TableCell>
 										<TableCell>
-											<BillSponsor bill={bill} />
+											<BillSponsors bill={bill} />
 										</TableCell>
 										<TableCell>
 											<FavouriteButton bill={bill} />

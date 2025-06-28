@@ -23,7 +23,7 @@ import {
 	useReducer,
 } from 'react'
 import { toggleFavoriteBill } from '../../utils/bills'
-import { BillSponsor } from './BillSponsor.tsx'
+import { BillSponsors } from './BillSponsors.tsx'
 import { BillStatus } from './BillsStatus'
 
 type ActionDispatchArg = {
@@ -172,7 +172,7 @@ export default function FavoriteBills() {
 										alignSelf: 'end',
 									}}
 								>
-									<BillSponsor bill={bill} />
+									<BillSponsors bill={bill} />
 								</Typography>
 							</CardContent>
 							<CardActions sx={{ py: 0 }}>

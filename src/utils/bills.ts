@@ -23,7 +23,7 @@ const encodeSearchParams = ({
 	limit,
 	status: statusFilter,
 }: FetchParams) => {
-	let billStatusItems = []
+	let billStatusItems;
 	switch (statusFilter) {
 		case 'bill':
 			billStatusItems = billStatuses.filter((status) => status !== 'Enacted')
@@ -60,7 +60,6 @@ export function useFetchBills({
 		)
 			.then((res) => res.json() as Promise<LegislationResult>)
 			.then(({ results, head }) => {
-				setError('')
 				setBills(
 					results?.map(({ bill, billSort }) => ({
 						...bill,
@@ -70,6 +69,7 @@ export function useFetchBills({
 				)
 				setCurrentPage(Math.floor(skip / limit))
 				setPagesCount(Math.ceil(head.counts.resultCount / limit))
+				setError('')
 			})
 			.catch((e) => {
 				if (e instanceof Error) {
