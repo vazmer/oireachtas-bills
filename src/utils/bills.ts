@@ -23,7 +23,7 @@ const encodeSearchParams = ({
 	limit,
 	status: statusFilter,
 }: FetchParams) => {
-	let billStatusItems;
+	let billStatusItems
 	switch (statusFilter) {
 		case 'bill':
 			billStatusItems = billStatuses.filter((status) => status !== 'Enacted')
