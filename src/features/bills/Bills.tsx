@@ -20,21 +20,23 @@ import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Typography from '@mui/material/Typography'
-import { Fragment, useId, useState } from 'react'
+import { useId, useState } from 'react'
 import { TableRowsSkeleton } from '../../components/TableRowsSkeleton'
 import { useFetchBills } from '../../utils/bills'
 import { useBillsModal } from './BillsModal'
+import { BillSponsor } from './BillSponsor.tsx'
 import { BillStatus } from './BillsStatus'
 import FavoriteBills, { FavouriteButton } from './FavoriteBills'
 
 type BillStatusOptions = 'bill' | 'act' | 'all'
 
 export default function Bills() {
-	const id = useId()
 	const theme = useTheme()
-	const { openModal } = useBillsModal()
 	const [selectedTabIndex, setSelectedTabIndex] = useState(0)
+	const { openModal } = useBillsModal()
+	const selectId = useId()
 
+	// Query params that are later transformed to searchParams for the legislation fetch request
 	const [queryParams, setQueryParams] = useState<{
 		skip: number
 		limit: number
@@ -45,6 +47,7 @@ export default function Bills() {
 		status: 'all',
 	})
 
+	// resend fetch request on each query param change
 	const { bills, error, loading, currentPage, pagesCount } = useFetchBills({
 		skip: queryParams.skip,
 		limit: queryParams.limit,
@@ -82,7 +85,7 @@ export default function Bills() {
 				<Box sx={{ my: 2 }}>
 					<FormControl variant="standard" sx={{ minWidth: 100 }}>
 						<Select
-							id={`select-${id}`}
+							id={`select-${selectId}`}
 							defaultValue="all"
 							size="small"
 							label="Bill Type"
@@ -145,6 +148,8 @@ export default function Bills() {
 										onClick={() => openModal(bill)}
 										onKeyDown={(e) => {
 											if (e.key === 'Enter' || e.key === 'Space') {
+												// don't propagate event to children elements (e.g. Favorite button)
+												// in case of an Enter or Space
 												e.stopPropagation()
 												openModal(bill)
 											}
@@ -160,11 +165,7 @@ export default function Bills() {
 											<BillStatus bill={bill} />
 										</TableCell>
 										<TableCell>
-											{bill.sponsors.map(({ sponsor }) => (
-												<Fragment key={sponsor.as.showAs + sponsor.by.showAs}>
-													{sponsor.as.showAs}
-												</Fragment>
-											))}
+											<BillSponsor bill={bill}/>
 										</TableCell>
 										<TableCell>
 											<FavouriteButton bill={bill} />
@@ -177,7 +178,7 @@ export default function Bills() {
 										{loading && <TableRowsSkeleton />}
 										{!loading && (
 											<Typography sx={{ color: 'text.secondary' }}>
-												No bills found. Please refine your search, or try later.
+												No bills found. Please refine your search, or try again later.
 											</Typography>
 										)}
 									</TableCell>
@@ -197,7 +198,7 @@ export default function Bills() {
 											})
 										}
 										rowsPerPage={queryParams.limit}
-										rowsPerPageOptions={[10, 25, 50]}
+										rowsPerPageOptions={[10, 15, 25]}
 										onRowsPerPageChange={(event) =>
 											setQueryParams({
 												...queryParams,

@@ -17,13 +17,13 @@ import { useSnackbar } from 'notistack'
 import {
 	type ActionDispatch,
 	createContext,
-	Fragment,
 	type ReactNode,
 	use,
 	useMemo,
 	useReducer,
 } from 'react'
 import { toggleFavoriteBill } from '../../utils/bills'
+import { BillSponsor } from './BillSponsor.tsx'
 import { BillStatus } from './BillsStatus'
 
 type ActionDispatchArg = {
@@ -163,6 +163,7 @@ export default function FavoriteBills() {
 								subheader={<BillStatus bill={bill} />}
 							/>
 							<CardContent sx={{ py: 0, flexGrow: 1 }}>
+								<Typography sx={{ mb: 1 }}>Sponsors:</Typography>
 								<Typography
 									gutterBottom
 									sx={{
@@ -171,11 +172,7 @@ export default function FavoriteBills() {
 										alignSelf: 'end',
 									}}
 								>
-									{bill.sponsors.map(({ sponsor }) => (
-										<Fragment key={sponsor.as.showAs + sponsor.by.showAs}>
-											{sponsor.as.showAs}
-										</Fragment>
-									))}
+									<BillSponsor bill={bill} />
 								</Typography>
 							</CardContent>
 							<CardActions sx={{ py: 0 }}>
